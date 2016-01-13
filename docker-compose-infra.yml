@@ -1,0 +1,43 @@
+#hbase:
+ #   image: kevinsvds/hbase
+
+#zookeeper:
+#    image: confluent/zookeeper
+#    ports:
+#        - "2181:2181"
+
+#kafka:
+#    image: confluent/kafka
+#    ports:
+#        - "9092:9092"
+#    external_links:
+#        - zookeeper
+#    environment:
+#        - KAFKA_ADVERTISED_HOST_NAME=$DOCKER_MACHINE
+
+
+schema-registry:
+    image: confluent/schema-registry
+    container_name: schema-registry
+    restart: on-failure
+    ports:
+        - "8081:8081"
+    external_links:
+        - zookeeper
+        - kafka
+
+
+kafka-rest:
+    image: confluent/rest-proxy
+    container_name: kafka-rest
+    restart: on-failure
+    ports:
+        - "8082:8082"
+    external_links:
+        - zookeeper
+        - kafka
+
+
+
+
+

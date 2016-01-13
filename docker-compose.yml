@@ -1,0 +1,14 @@
+slack:
+    build: .
+    command: java -jar target/slack-ingestion-1.0-SNAPSHOT.jar
+    ports:
+        - "8090:8090"
+    external_links:
+        - schema-registry
+        - kafka-rest
+    environment:
+        - BOOTSTRAP_SERVER=$BOOTSTRAP_SERVER
+        - SCHEMA_REGISTRY_URL=$SCHEMA_REGISTRY_URL
+        - API_URL=$SLACK_API
+        - TOKEN=$SLACK_TOKEN
+
