@@ -18,7 +18,7 @@ def index():
 
 @route('/belay/reactions')
 def most_reactions():
-	return "hello"
+	return "hello!"
 
 run(host='0.0.0.0', port=9090)
 
