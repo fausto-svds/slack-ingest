@@ -1,0 +1,15 @@
+channel-data:
+    build: .
+    dockerfile: Dockerfile.data
+    volumes:
+        - ../data/:/data
+
+
+notebook:
+    image: jupyter/scipy-notebook
+    ports:
+        - "8888:8888"
+        - "8889:8889"
+    volumes_from:
+        - channel-data
+
